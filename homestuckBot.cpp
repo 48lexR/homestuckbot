@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <dpp/dpp.h>
-#include "../../private/dppkey.h"
+#include "../private/dppkey.h"
 
 std::map<std::string, std::string> ASPECT = {
 	{"space", "Space is the aspect of creation. Those bound to the aspect of Space tend to be passive people, and as a result, don't get angry very easily unless pushed to their absolute limits. Space is associated with physical location, writing, and artwork."},
@@ -52,17 +52,20 @@ int main()
 							{
 								std::string arg = std::get<std::string>(event.get_parameter("argc"));
 								std::string a = ASPECT[arg];
-								event.reply(a);
+								event.reply(a);[2023-12-22 21:26:54] DEBUG: Resume URL for session 82d98b923f7d14d17697017e640da526 is wss://gateway-us-east1-b.discord.gg (host: gateway-us-east1-b.discord.gg)
 							} else if(event.command.get_command_name() == "class"){
 								std::string a = CLASS[std::get<std::string>(event.get_parameter("argc"))];
 								event.reply(a);
+							} else if(event.command.get_command_name() == "lunar-sway"){
+								event.reply("There are two moons one can dream on: \n Prospit represents intuition, passiveness, and carefreeness \n Derse represents thought, activeness, and planning.");
 							} });
 
 	bot.on_ready([&bot](const dpp::ready_t &event)
 				 {
     if(dpp::run_once<struct register_bot_commands>()){
 		dpp::slashcommand aspect("aspect", "I can tell you an aspect. If no aspect is provided, I will tell you what an aspect is.", bot.me.id);
-		dpp::slashcommand class_t("class", "I can tell you about a class. If you type \"what\", I will tell you what an aspect is.", bot.me.id);
+		dpp::slashcommand class_c("class", "I can tell you about a class. If you type \"what\", I will tell you what an aspect is.", bot.me.id);
+		dpp::slashcommand lunar_sway("lunar-sway", "I can tell you about lunar sway.", bot.me.id);
 
 		aspect.add_option(
 			dpp::command_option(dpp::co_string, "argc", "Aspect provided?")
@@ -81,7 +84,7 @@ int main()
 				.add_choice(dpp::command_option_choice("what", "what"))
 		);
 
-		class_t.add_option(
+		class_c.add_option(
 			dpp::command_option(dpp::co_string, "argc", "Class provided?")
 				.add_choice(dpp::command_option_choice("what", "what"))
 				.add_choice(dpp::command_option_choice("knight", "knight"))
@@ -102,7 +105,8 @@ int main()
 		);
 
 		bot.global_command_create(aspect);
-		bot.global_command_create(class_t);
+		bot.global_command_create(class_c);
+		bot.global_command_create(lunar_sway);
 
 	  
     } });
