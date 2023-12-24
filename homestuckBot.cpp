@@ -52,7 +52,7 @@ int main()
 							{
 								std::string arg = std::get<std::string>(event.get_parameter("argc"));
 								std::string a = ASPECT[arg];
-								event.reply(a);[2023-12-22 21:26:54] DEBUG: Resume URL for session 82d98b923f7d14d17697017e640da526 is wss://gateway-us-east1-b.discord.gg (host: gateway-us-east1-b.discord.gg)
+								event.reply(a);
 							} else if(event.command.get_command_name() == "class"){
 								std::string a = CLASS[std::get<std::string>(event.get_parameter("argc"))];
 								event.reply(a);
