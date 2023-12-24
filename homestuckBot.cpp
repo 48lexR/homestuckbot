@@ -62,54 +62,53 @@ int main()
 
 	bot.on_ready([&bot](const dpp::ready_t &event)
 				 {
-    if(dpp::run_once<struct register_bot_commands>()){
-		dpp::slashcommand aspect("aspect", "I can tell you an aspect. If no aspect is provided, I will tell you what an aspect is.", bot.me.id);
-		dpp::slashcommand class_c("class", "I can tell you about a class. If you type \"what\", I will tell you what an aspect is.", bot.me.id);
-		dpp::slashcommand lunar_sway("lunar-sway", "I can tell you about lunar sway.", bot.me.id);
+		if(dpp::run_once<struct register_bot_commands>()){
+			dpp::slashcommand aspect("aspect", "I can tell you an aspect. If no aspect is provided, I will tell you what an aspect is.", bot.me.id);
+			dpp::slashcommand class_c("class", "I can tell you about a class. If you type \"what\", I will tell you what an aspect is.", bot.me.id);
+			dpp::slashcommand lunar_sway("lunar-sway", "I can tell you about lunar sway.", bot.me.id);
 
-		aspect.add_option(
-			dpp::command_option(dpp::co_string, "argc", "Aspect provided?")
-				.add_choice(dpp::command_option_choice("space", "space"))
-				.add_choice(dpp::command_option_choice("mind", "mind"))
-				.add_choice(dpp::command_option_choice("hope", "hope"))
-				.add_choice(dpp::command_option_choice("breath", "breath"))
-				.add_choice(dpp::command_option_choice("life", "life"))
-				.add_choice(dpp::command_option_choice("light", "light"))
-				.add_choice(dpp::command_option_choice("time", "time"))
-				.add_choice(dpp::command_option_choice("heart", "heart"))
-				.add_choice(dpp::command_option_choice("rage", "rage"))
-				.add_choice(dpp::command_option_choice("blood", "blood"))
-				.add_choice(dpp::command_option_choice("doom", "doom"))
-				.add_choice(dpp::command_option_choice("void", "void"))
-				.add_choice(dpp::command_option_choice("what", "what"))
-		);
+			aspect.add_option(
+				dpp::command_option(dpp::co_string, "argc", "Aspect provided?")
+					.add_choice(dpp::command_option_choice("space", "space"))
+					.add_choice(dpp::command_option_choice("mind", "mind"))
+					.add_choice(dpp::command_option_choice("hope", "hope"))
+					.add_choice(dpp::command_option_choice("breath", "breath"))
+					.add_choice(dpp::command_option_choice("life", "life"))
+					.add_choice(dpp::command_option_choice("light", "light"))
+					.add_choice(dpp::command_option_choice("time", "time"))
+					.add_choice(dpp::command_option_choice("heart", "heart"))
+					.add_choice(dpp::command_option_choice("rage", "rage"))
+					.add_choice(dpp::command_option_choice("blood", "blood"))
+					.add_choice(dpp::command_option_choice("doom", "doom"))
+					.add_choice(dpp::command_option_choice("void", "void"))
+					.add_choice(dpp::command_option_choice("what", "what"))
+			);
 
-		class_c.add_option(
-			dpp::command_option(dpp::co_string, "argc", "Class provided?")
-				.add_choice(dpp::command_option_choice("what", "what"))
-				.add_choice(dpp::command_option_choice("knight", "knight"))
-				.add_choice(dpp::command_option_choice("maid", "maid"))
-				.add_choice(dpp::command_option_choice("heir", "heir"))
-				.add_choice(dpp::command_option_choice("witch", "witch"))
-				.add_choice(dpp::command_option_choice("thief", "thief"))
-				.add_choice(dpp::command_option_choice("rogue", "rogue"))
-				.add_choice(dpp::command_option_choice("seer", "seer"))
-				.add_choice(dpp::command_option_choice("mage", "mage"))
-				.add_choice(dpp::command_option_choice("sylph", "sylph"))
-				.add_choice(dpp::command_option_choice("page", "page"))
-				.add_choice(dpp::command_option_choice("bard", "bard"))
-				.add_choice(dpp::command_option_choice("prince", "prince"))
-				.add_choice(dpp::command_option_choice("lord", "lord"))
-				.add_choice(dpp::command_option_choice("muse", "muse"))
-				.add_choice(dpp::command_option_choice("what", "what"))
-		);
+			class_c.add_option(
+				dpp::command_option(dpp::co_string, "argc", "Class provided?")
+					.add_choice(dpp::command_option_choice("what", "what"))
+					.add_choice(dpp::command_option_choice("knight", "knight"))
+					.add_choice(dpp::command_option_choice("maid", "maid"))
+					.add_choice(dpp::command_option_choice("heir", "heir"))
+					.add_choice(dpp::command_option_choice("witch", "witch"))
+					.add_choice(dpp::command_option_choice("thief", "thief"))
+					.add_choice(dpp::command_option_choice("rogue", "rogue"))
+					.add_choice(dpp::command_option_choice("seer", "seer"))
+					.add_choice(dpp::command_option_choice("mage", "mage"))
+					.add_choice(dpp::command_option_choice("sylph", "sylph"))
+					.add_choice(dpp::command_option_choice("page", "page"))
+					.add_choice(dpp::command_option_choice("bard", "bard"))
+					.add_choice(dpp::command_option_choice("prince", "prince"))
+					.add_choice(dpp::command_option_choice("lord", "lord"))
+					.add_choice(dpp::command_option_choice("muse", "muse"))
+					.add_choice(dpp::command_option_choice("what", "what"))
+			);
 
-		bot.global_command_create(aspect);
-		bot.global_command_create(class_c);
-		bot.global_command_create(lunar_sway);
-
-	  
-    } });
+			bot.global_command_create(aspect);
+			bot.global_command_create(class_c);
+			bot.global_command_create(lunar_sway);
+		
+		} });
 
 	bot.start(dpp::st_wait);
 
